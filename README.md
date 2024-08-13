@@ -9,13 +9,16 @@ PRAC experiment writing thoughts：数据说明要有，且一定要有落脚点
 在对比实验后，不止说我们方法的好，更全面地讲清楚我们的方法，在加入periodicity awareness后，能明显优于Reservoir computing，即将RC优化，超过了网络训练方法即对比方法TimesNet, LSTNet, InceptionTime等方法。
 
 ```latex
-Statistically, PARC exhibits significant differences from most baselines and consistently wins more in one-to-one comparisons. Across different method categories, we find that existing RC methods (rmESN and ConvMESN) generally lag behind fully trainable neural networks (such as LSTNet and InceptionTime). Nevertheless, our method effectively bridges this gap, achieving top-performing results and highlighting the benefits of incorporating periodicity awareness.
+Statistically, PARC exhibits significant differences from most baselines and consistently wins more in one-to-one comparisons. Across different method categories, we find that existing RC methods (rmESN and ConvMESN) generally lag behind fully trainable neural networks (such as LSTNet and InceptionTime).
+Nevertheless, our method effectively bridges this gap, achieving top-performing results and highlighting the benefits of incorporating periodicity awareness.
 ```
 
 2.时间和计算复杂度放在一起分析，能给出时间复杂度的理论计算最好
 
 ```latex
-The main factors affecting PARC's complexity include sample size $M$, series length $L$, period limit $\kappa$, and reservoir size $S$. According to experiments, PARC's runtime is primarily spent on iteration of PerioRes modules and computation of dynamic features, with a complexity of $O(\kappa M(S^{2}L+S^{3}))$. This means that under specific settings, the runtime is nearly linear with the data complexity (characterized by $M$ and $L$), showcasing exceptional efficiency. 
+The main factors affecting PARC's complexity include sample size $M$, series length $L$, period limit $\kappa$, and reservoir size $S$.
+According to experiments, PARC's runtime is primarily spent on iteration of PerioRes modules and computation of dynamic features, with a complexity of $O(\kappa M(S^{2}L+S^{3}))$.
+This means that under specific settings, the runtime is nearly linear with the data complexity (characterized by $M$ and $L$), showcasing exceptional efficiency. 
 ```
 
 时间的分析要全面，不能简单比较结果，comparison methods要分类，trainable 普遍效率低，但不一定要全部点明。师兄只点明了LSTNet，因为其网络结构非常简单，纵向上看很直观。关键的non-trainable方法一定要点名，和Rocket方法比时间，和Hydra、Minirocket比acc。在比较时间时提及rmESN时间最快，但是精度欠缺。在和Hydra\Minirocket对比时，要分析其时间优势和性能优势的原因。
